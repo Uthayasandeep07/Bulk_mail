@@ -11,10 +11,10 @@
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `userId` int(8) NOT NULL,
-  `userName` varchar(55) NOT NULL,
+  `mail_id` varchar(55) NOT NULL,
   `password` varchar(55) NOT NULL,
-  `firstName` varchar(255) NOT NULL,
-  `lastName` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `roll_no` int(11) NOT NULL
 );
 
 --

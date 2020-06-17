@@ -21,7 +21,7 @@ if (isset($_POST["import"])) {
             }
             $userName = "";
             if (isset($column[1])) {
-                $userName = mysqli_real_escape_string($conn, $column[1]);
+                $mail_id = mysqli_real_escape_string($conn, $column[1]);
             }
             $password = "";
             if (isset($column[2])) {
@@ -29,22 +29,22 @@ if (isset($_POST["import"])) {
             }
             $firstName = "";
             if (isset($column[3])) {
-                $firstName = mysqli_real_escape_string($conn, $column[3]);
+                $name = mysqli_real_escape_string($conn, $column[3]);
             }
             $lastName = "";
             if (isset($column[4])) {
-                $lastName = mysqli_real_escape_string($conn, $column[4]);
+                $roll_no = mysqli_real_escape_string($conn, $column[4]);
             }
             
-            $sqlInsert = "INSERT into users (userId,userName,password,firstName,lastName)
+            $sqlInsert = "INSERT into users (userId,mail_id,password,name,roll_no)
                    values (?,?,?,?,?)";
             $paramType = "issss";
             $paramArray = array(
                 $userId,
-                $userName,
+                $mail_id,
                 $password,
-                $firstName,
-                $lastName
+                $name,
+                $roll_no
             );
             $insertId = $db->insert($sqlInsert, $paramType, $paramArray);
             
@@ -185,10 +185,11 @@ $(document).ready(function() {
             <table id='userTable'>
             <thead>
                 <tr>
+                    <th>User_ID</th>
                     <th>Mail_Id</th>
                     <th>Password</th>
-                    <th>Roll_NO</th>
-                    <th>Dept</th>
+                    <th>Name</th>
+                    <th>Roll_No</th>
 
                 </tr>
             </thead>
@@ -200,9 +201,10 @@ $(document).ready(function() {
                 <tbody>
                 <tr>
                     <td><?php  echo $row['userId']; ?></td>
-                    <td><?php  echo $row['userName']; ?></td>
-                    <td><?php  echo $row['firstName']; ?></td>
-                    <td><?php  echo $row['lastName']; ?></td>
+                    <td><?php  echo $row['mail_id']; ?></td>
+                    <td><?php  echo $row['password']; ?></td>
+                    <td><?php  echo $row['name']; ?></td>
+                    <td><?php  echo $row['roll_no']; ?></td>
                 </tr>
                     <?php
                 }
