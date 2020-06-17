@@ -4,7 +4,7 @@ use Phppot\DataSource;
 require_once 'DataSource.php';
 $db = new DataSource();
 $conn = $db->getConnection();
-
+// Importing it to User view
 if (isset($_POST["import"])) {
     
     $fileName = $_FILES["file"]["tmp_name"];
